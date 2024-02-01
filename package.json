@@ -1,0 +1,15 @@
+{
+    "name": "catalogue",
+    "version": "1.0.0",
+    "description": "",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+	"dependencies": {
+		"three": "^0.161.0"
+	},
+	"devDependencies": {
+		"vite": "^5.0.12"
+	}
+}
