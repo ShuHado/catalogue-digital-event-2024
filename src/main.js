@@ -142,12 +142,24 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(
-	90,
-	window.innerWidth / window.innerHeight,
-	0.1,
-	1000
-);
+let camera;
+if (window.matchMedia("(max-width: 768px)").matches) {
+	if (window.matchMedia("(max-width: 425px)").matches) {
+		camera = new THREE.PerspectiveCamera(
+			110,
+			window.innerWidth / window.innerHeight,
+			0.1,
+			1000
+		);
+	}
+} else {
+	camera = new THREE.PerspectiveCamera(
+		90,
+		window.innerWidth / window.innerHeight,
+		0.1,
+		1000
+	);
+}
 
 camera.position.z = 2;
 camera.position.y = 1;
@@ -159,7 +171,12 @@ renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setClearColor(0x000000, 0); // Fond transparent
 renderer.domElement.style.position = "absolute";
 renderer.domElement.style.top = 0;
-renderer.domElement.style.left = "20%";
+if (window.matchMedia("(max-width: 768px)").matches) {
+	renderer.domElement.style.left = "30%";
+	renderer.domElement.style.top = "-20%";
+} else {
+	renderer.domElement.style.left = "20%";
+}
 renderer.domElement.style.zIndex = 9;
 // renderer.outputColorSpace = THREE.SRGBTransfer;
 document.body.appendChild(renderer.domElement);
@@ -387,8 +404,31 @@ function showEmbedForPlanet(index) {
 }
 
 const controls = new OrbitControls(camera, renderer.domElement);
-// controls.enableZoom = false;
-controls.enabled = false;
+controls.enableZoom = false;
+controls.enablePan = false;
+controls.minPolarAngle = Math.PI / 2; // Angle horizontal - aucune rotation verticale autorisée
+controls.maxPolarAngle = Math.PI / 2; // Même valeur pour bloquer la rotation verticale
+let lastTouchY = 0;
+
+function onTouchStart(event) {
+	if (event.touches.length > 0) {
+		lastTouchY = event.touches[0].clientY;
+	}
+}
+
+function onTouchMove(event) {
+	if (event.touches.length > 0) {
+		const touchY = event.touches[0].clientY;
+		const deltaY = lastTouchY - 1;
+		lastTouchY = 1;
+
+		// Simule un événement de scroll avec delta
+		onScroll({ deltaY: deltaY });
+	}
+}
+window.addEventListener("touchstart", onTouchStart, { passive: false });
+window.addEventListener("touchmove", onTouchMove, { passive: false });
+
 controls.target.set(0, 1, 0);
 
 const snapPositions = [
@@ -485,3 +525,46 @@ function animate() {
 
 window.addEventListener("wheel", onScroll);
 animate();
+document.addEventListener("DOMContentLoaded", function () {
+	var imgs = document.querySelectorAll(".popupclick"); // Sélectionnez tous les éléments avec la classe .popupclick
+	var popup = document.getElementById("popup");
+	var closePopupBtn = document.getElementById("closePopup");
+
+	imgs.forEach(function (img) {
+		img.addEventListener("click", function () {
+			popup.style.display = "flex"; // Affiche la popup
+		});
+	});
+
+	closePopupBtn.addEventListener("click", function () {
+		popup.style.display = "none"; // Cache la popup
+	});
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+	// S'assure que le code s'exécute une fois que le DOM est entièrement chargé
+	var buttons = document.querySelectorAll(
+		".click1, .click2, .click3, .click4, .click5, .click6, .click7, .click8, .click9, .click10, .click11, .click12, .click13, .click14, .click15"
+	);
+	var popup = document.getElementById("popup"); // Assurez-vous que cet ID correspond à votre popup
+
+	buttons.forEach(function (button, index) {
+		button.addEventListener("click", function () {
+			popup.style.display = "none"; // Ferme la popup
+
+			// Logique pour déplacer la caméra
+			targetY = snapPositions[index];
+			currentSnapIndex = index;
+
+			// Mettez à jour la position de la lumière et de sa cible
+			lighY = targetY - 2;
+			targetLightY = targetY - 5;
+			directionalLight.position.set(-5, lighY, 5);
+			directionalLight.target.position.set(0, targetLightY, 0);
+			scene.add(directionalLight.target);
+
+			// Affichez les informations de la planète actuelle si nécessaire
+			showEmbedForPlanet(index);
+		});
+	});
+});
