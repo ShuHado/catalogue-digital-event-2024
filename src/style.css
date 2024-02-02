@@ -85,7 +85,7 @@ body {
 	color: white;
 }
 .modal-content {
-	display: flex;
+	display: none;
 	flex-direction: column;
 	background-color: black;
 	margin: 119px 0 0 64px;
@@ -94,6 +94,7 @@ body {
 	height: 70%;
 	border: 1px solid white;
 	border-radius: 0px 40px;
+	z-index: 99;
 }
 .modal-content::-webkit-scrollbar {
 	width: 0;
@@ -103,4 +104,20 @@ body {
 }
 embed {
 	height: 100%;
+}
+
+#footer {
+	padding: 0px 20px;
+	position: absolute;
+	bottom: 1%;
+	left: 50%;
+	transform: translate(-50%, 0);
+	z-index: 999;
+}
+
+#footer img {
+	height: 10vh;
+}
+#footer img:hover {
+	cursor: pointer;
 }
