@@ -146,7 +146,14 @@ let camera;
 if (window.matchMedia("(max-width: 768px)").matches) {
 	if (window.matchMedia("(max-width: 425px)").matches) {
 		camera = new THREE.PerspectiveCamera(
-			110,
+			115,
+			window.innerWidth / window.innerHeight,
+			0.1,
+			1000
+		);
+	} else {
+		camera = new THREE.PerspectiveCamera(
+			100,
 			window.innerWidth / window.innerHeight,
 			0.1,
 			1000
@@ -184,7 +191,8 @@ document.body.appendChild(renderer.domElement);
 // Chargement de la texture
 const texture1Loader = new THREE.TextureLoader();
 const texture1 = texture1Loader.load("./img/marble5.jpg");
-texture1.encoding = THREE.sRGBEncoding;
+// texture1.encoding = THREE.sRGBEncoding;
+texture1.colorSpace = THREE.SRGBColorSpace;
 const normalMap1 = texture1Loader.load("./normal/normalclay.jpg");
 const texture2 = texture1Loader.load("./img/marble7.jpg");
 console.log(normalMap1);
@@ -410,24 +418,24 @@ controls.minPolarAngle = Math.PI / 2; // Angle horizontal - aucune rotation vert
 controls.maxPolarAngle = Math.PI / 2; // Même valeur pour bloquer la rotation verticale
 let lastTouchY = 0;
 
-function onTouchStart(event) {
-	if (event.touches.length > 0) {
-		lastTouchY = event.touches[0].clientY;
-	}
-}
+// function onTouchStart(event) {
+// 	if (event.touches.length > 0) {
+// 		lastTouchY = event.touches[0].clientY;
+// 	}
+// }
 
-function onTouchMove(event) {
-	if (event.touches.length > 0) {
-		const touchY = event.touches[0].clientY;
-		const deltaY = lastTouchY - 1;
-		lastTouchY = 1;
+// function onTouchMove(event) {
+// 	if (event.touches.length > 0) {
+// 		const touchY = event.touches[0].clientY;
+// 		const deltaY = lastTouchY - touchY;
+// 		lastTouchY = 1;
 
-		// Simule un événement de scroll avec delta
-		onScroll({ deltaY: deltaY });
-	}
-}
-window.addEventListener("touchstart", onTouchStart, { passive: false });
-window.addEventListener("touchmove", onTouchMove, { passive: false });
+// 		// Simule un événement de scroll avec delta
+// 		onScroll({ deltaY: deltaY });
+// 	}
+// }
+// window.addEventListener("touchstart", onTouchStart, { passive: false });
+// window.addEventListener("touchmove", onTouchMove, { passive: false });
 
 controls.target.set(0, 1, 0);
 
@@ -525,10 +533,12 @@ function animate() {
 
 window.addEventListener("wheel", onScroll);
 animate();
+
 document.addEventListener("DOMContentLoaded", function () {
 	var imgs = document.querySelectorAll(".popupclick"); // Sélectionnez tous les éléments avec la classe .popupclick
 	var popup = document.getElementById("popup");
 	var closePopupBtn = document.getElementById("closePopup");
+	var body = document.querySelector("body");
 
 	imgs.forEach(function (img) {
 		img.addEventListener("click", function () {
