@@ -3,6 +3,8 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 
 // Scene
 const scene = new THREE.Scene();
+const embed = document.getElementById("embed1");
+console.log(embed);
 
 // Camera
 // const camera = new THREE.PerspectiveCamera(
@@ -44,24 +46,21 @@ camera.position.x = 5;
 let cameraMinZposition = 10;
 let cameraMaxZposition = -155;
 
-// Embed container
-const embedContainer = document.getElementById("container");
-
 // Renderer
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.domElement.style.position = "absolute";
-renderer.domElement.style.top = "4%";
-renderer.domElement.style.left = "40%";
+if (window.innerWidth <= 768) {
+	renderer.domElement.style.left = "0%";
+	renderer.domElement.style.top = "0%";
+} else {
+	renderer.domElement.style.top = "4%";
+	renderer.domElement.style.left = "40%";
+}
 renderer.domElement.style.transform = "scaleX(-1)";
 renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 document.body.appendChild(renderer.domElement);
-
-if (window.innerWidth < 768) {
-	renderer.domElement.style.left = "0%";
-	renderer.domElement.style.top = "0%";
-}
 
 // Orbit controls
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -312,7 +311,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	imgs.forEach(function (img) {
 		img.addEventListener("click", function () {
-			popup.style.display = "flex"; // Affiche la popup
+			popup.style.display = "block"; // Affiche la popup
 		});
 	});
 
