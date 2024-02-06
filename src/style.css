@@ -68,7 +68,7 @@ body {
 .modal-content::-webkit-scrollbar {
 	width: 0;
 }
-#closeModalBtn {
+.closeModalBtn {
 	display: none;
 }
 embed {
@@ -90,125 +90,35 @@ embed {
 	cursor: pointer;
 }
 
-.popup {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-color: rgba(0, 0, 0, 0.9);
-	z-index: 1000;
-}
-
-.closePopupBtn {
-	position: absolute;
-	top: 4%;
-	right: 20px;
-	cursor: pointer;
-	width: 1.5%;
-}
-
-.popup h1 {
-	color: white;
-	text-align: center;
-}
-
-.clickable {
-	cursor: pointer;
-	width: 20%;
-}
-.grid-container {
-	display: grid;
-	grid-template-columns: repeat(5, 1fr);
-	grid-template-rows: repeat(5, 1fr);
-	grid-column-gap: 0px;
-	grid-row-gap: 0px;
-}
-
-.grid-item {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-.grid-item img {
-	max-width: 100%;
-	/* Empêche l'image de dépasser la largeur du conteneur */
-	max-height: 100%;
-	/* Empêche l'image de dépasser la hauteur du conteneur */
-}
-
-.item1 {
-	grid-area: 1 / 2 / 2 / 3;
-}
-
-.item2 {
-	grid-area: 1 / 3 / 2 / 4;
-}
-
-.item3 {
-	grid-area: 1 / 4 / 2 / 5;
-}
-
-.item4 {
-	grid-area: 2 / 4 / 3 / 5;
-}
-
-.item5 {
-	grid-area: 2 / 2 / 3 / 3;
-}
-
-.item6 {
-	grid-area: 3 / 1 / 4 / 2;
-}
-
-.item7 {
-	grid-area: 3 / 2 / 4 / 3;
-}
-
-.item8 {
-	grid-area: 3 / 3 / 4 / 4;
-}
-
-.item9 {
-	grid-area: 3 / 4 / 4 / 5;
-}
-
-.item10 {
-	grid-area: 3 / 5 / 4 / 6;
-}
-
-.item11 {
-	grid-area: 4 / 4 / 5 / 5;
-}
-
-.item12 {
-	grid-area: 4 / 2 / 5 / 3;
-}
-
-.item13 {
-	grid-area: 5 / 2 / 6 / 3;
-}
-
-.item14 {
-	grid-area: 5 / 3 / 6 / 4;
-}
-
-.item15 {
-	grid-area: 5 / 4 / 6 / 5;
-}
-
 .main {
 	display: none;
 }
 
 .main p {
-	font-size: 12px;
+	font-size: 16px;
 	font-family: "Fira Code", monospace;
 }
+
+.main p.description {
+	margin-bottom: 10px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 5;
+}
+
+.main p.showEmbed {
+	color: white;
+	text-align: right;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
 .main h2 {
 	margin: 0;
 	font-family: "QelliaRegular";
-	font-size: 40px;
+	font-size: 24px;
 }
 
 .main .container {
@@ -256,39 +166,20 @@ embed {
 	#footer {
 		bottom: 3%;
 	}
-	#openModalBtn {
-		display: block;
+
+	.closeModalBtn {
 		position: absolute;
-		top: 15%;
-		left: 50%;
-		transform: translate(-50%, -15%);
-		z-index: 9999;
-	}
-	#closeModalBtn {
-		align-items: center;
-		justify-content: center;
-		position: absolute;
-		right: 4%;
-		top: 2.5%;
+		right: 6%;
+		top: 1%;
 		font-weight: bold;
 		font-size: 4rem;
-		background-color: rgba(0, 0, 0, 0.5);
-		height: 5%;
-		width: 9%;
 		color: white;
 	}
-	embed #document body {
-		overflow: hidden;
-		text-overflow: ellipsis;
-	}
-	.grid-item img {
-		width: 60%;
-	}
-
-	.grid-container {
-		height: 80vh;
+	embed {
+		display: none;
 	}
 }
+
 @media (max-width: 425px) {
 	#container {
 		margin: 5.5%;
@@ -301,13 +192,10 @@ embed {
 	.modal-content {
 		height: 40dvh;
 	}
-	.grid-item img {
-		width: 60%;
-	}
-	.grid-container {
-		height: 70vh;
-	}
 	#footer {
 		bottom: 0;
+	}
+	embed {
+		display: none;
 	}
 }

@@ -39,21 +39,21 @@ const loader = new THREE.TextureLoader();
 const normalMap = loader.load("./normal/normalclay.jpg");
 
 const texturePaths = [
-	"./img/marble1.jpg",
-	"./img/marble2.jpg",
-	"./img/marble3.jpg",
-	"./img/marble4.jpg",
-	"./img/marble5.jpg",
-	"./img/marble6.jpg",
-	"./img/marble7.jpg",
-	"./img/marble8.jpg",
-	"./img/marble9.jpg",
-	"./img/marble10.jpg",
-	"./img/marble11.jpg",
-	"./img/marble12.jpg",
-	"./img/marble13.jpg",
-	"./img/marble14.jpg",
-	"./img/marble15.jpg",
+	"./textures/arlequin.jpg",
+	"./textures/beige.jpg",
+	"./textures/bonbons.jpg",
+	"./textures/desert.jpg",
+	"./textures/feu2.jpg",
+	"./textures/flamme.jpg",
+	"./textures/jaune.jpg",
+	"./textures/ob.jpg",
+	"./textures/ov.jpg",
+	"./textures/pommedamour.jpg",
+	"./textures/rb.jpg",
+	"./textures/roses.jpg",
+	"./textures/sombretest.jpg",
+	"./textures/sully.jpg",
+	"./textures/lr3.jpg",
 ];
 
 // Ajout d'une lumière ambiante pour un éclairage doux global
@@ -239,7 +239,7 @@ function animate() {
 	particles.geometry.attributes.position.needsUpdate = true; // Important pour mettre à jour la géométrie
 
 	planets.forEach((planet) => {
-		planet.rotation.y += 0.005;
+		planet.rotation.y += 0.001;
 	});
 	// console.log(camera.fov);
 	renderer.render(scene, camera);
@@ -267,6 +267,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		popup.style.display = "none"; // Cache la popup
 	});
 });
+
 document.addEventListener("DOMContentLoaded", function () {
 	// Obtient la référence à la popup
 	const popup = document.getElementById("popup");

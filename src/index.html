@@ -1,12 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="description"
+			content="Le catalogue 2024 du Digital Event de l’ESD, l’École Supérieur du Digital, retransmet les différentes productions des élèves avec un thème: 'l'Espace'."
+		/>
+		<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 		<title>ESD Digital Event - Catalogue 2024</title>
-		<link href="style.css" rel="stylesheet" />
+		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="loader.css" />
+		<link rel="stylesheet" href="popup.css" />
 	</head>
 	<body>
+		<div id="splash-screen">
+			<div id="splash-container">
+				<div id="splash-header">
+					<h1>Digital Event</h1>
+					<p>
+						An 202024 après Zidane. Suite à une longue domination,
+						les humains sont venus à bout de leur planète. La Terre
+						c’est finito, les humains sont tous mourut. Ce qu’il
+						reste de cette espèce : les créations du Digital Event
+						2024.
+					</p>
+				</div>
+			</div>
+			<div id="loader" style="display: none"></div>
+			<!-- Loader ici -->
+			<div id="enter-site-container">
+				<button id="enter-site" style="display: none">Entrer</button>
+			</div>
+		</div>
 		<div id="container">
 			<div id="header">
 				<h1>ESD - Digital Event 2024</h1>
@@ -24,72 +50,76 @@
 						<div class="center-line"
 							><span class="line"></span
 						></div>
-						<p>
+						<p class="description">
 							Après le plan de licenciement impactant l’équipe
 							Minitel™, la nouvelle équipe interface web est fière
 							de vous présenter son projet sur ce réseau de
 							communication international qu’est l’Internet.
 						</p>
-						<a href="./embed/snippet-1.html">Lire l’article</a>
+						<p class="showEmbed">Lire l’article</p>
 					</div>
 				</div>
-				<span id="closeModalBtn" class="close">&times;</span>
-				<embed type="text/html" src="./embed/snippet-1.html" />
+				<span class="closeModalBtn" class="close">&times;</span>
+				<embed
+					class="embedElement"
+					type="text/html"
+					src="./embed/snippet-1.html"
+				/>
 			</div>
 			<div id="embed2" class="modal-content">
-				<span id="closeModalBtn" class="close">&times;</span>
+				<span class="closeModalBtn" class="close">&times;</span>
 				<embed type="text/html" src="./embed/snippet-2.html" />
 			</div>
 			<div id="embed3" class="modal-content">
-				<span id="closeModalBtn" class="close">&times;</span>
+				<span class="closeModalBtn" class="close">&times;</span>
 				<embed type="text/html" src="./embed/snippet-3.html" />
 			</div>
 			<div id="embed4" class="modal-content">
-				<span id="closeModalBtn" class="close">&times;</span>
+				<span class="closeModalBtn" class="close">&times;</span>
 				<embed type="text/html" src="./embed/snippet-4.html" />
 			</div>
 			<div id="embed5" class="modal-content">
-				<span id="closeModalBtn" class="close">&times;</span>
+				<span class="closeModalBtn" class="close">&times;</span>
 				<embed type="text/html" src="./embed/snippet-5.html" />
 			</div>
 			<div id="embed6" class="modal-content">
-				<span id="closeModalBtn" class="close">&times;</span>
+				<span class="closeModalBtn" class="close">&times;</span>
 				<embed type="text/html" src="./embed/snippet-6.html" />
 			</div>
 			<div id="embed7" class="modal-content">
-				<span id="closeModalBtn" class="close">&times;</span>
+				<span class="closeModalBtn" class="close">&times;</span>
 				<embed type="text/html" src="./embed/snippet-7.html" />
 			</div>
 			<div id="embed8" class="modal-content">
-				<span id="closeModalBtn" class="close">&times;</span>
+				<span class="closeModalBtn" class="close">&times;</span>
 				<embed type="text/html" src="./embed/snippet-8.html" />
 			</div>
 			<div id="embed9" class="modal-content">
-				<span id="closeModalBtn" class="close">&times;</span>
+				<span class="closeModalBtn" class="close">&times;</span>
 				<embed type="text/html" src="./embed/snippet-9.html" />
 			</div>
 			<div id="embed10" class="modal-content">
-				<span id="closeModalBtn" class="close">&times;</span>
+				<span class="closeModalBtn" class="close">&times;</span>
 				<embed type="text/html" src="./embed/snippet-10.html" />
 			</div>
 			<div id="embed11" class="modal-content">
-				<span id="closeModalBtn" class="close">&times;</span>
+				<span class="closeModalBtn" class="close">&times;</span>
 				<embed type="text/html" src="./embed/snippet-11.html" />
 			</div>
 			<div id="embed12" class="modal-content">
-				<span id="closeModalBtn" class="close">&times;</span>
+				<span class="closeModalBtn" class="close">&times;</span>
 				<embed type="text/html" src="./embed/snippet-12.html" />
 			</div>
 			<div id="embed13" class="modal-content">
-				<span id="closeModalBtn" class="close">&times;</span>
+				<span class="closeModalBtn" class="close">&times;</span>
 				<embed type="text/html" src="./embed/snippet-13.html" />
 			</div>
 			<div id="embed14" class="modal-content">
-				<span id="closeModalBtn" class="close">&times;</span>
+				<span class="closeModalBtn" class="close">&times;</span>
 				<embed type="text/html" src="./embed/snippet-14.html" />
 			</div>
 			<div id="embed15" class="modal-content">
-				<span id="closeModalBtn" class="close">&times;</span>
+				<span class="closeModalBtn" class="close">&times;</span>
 				<embed type="text/html" src="./embed/snippet-15.html" />
 			</div>
 			<div id="footer">
@@ -101,124 +131,141 @@
 				/>
 			</div>
 			<div id="popup" class="popup" style="display: none">
-				<img
-					src="./planetpopup/close.svg"
-					alt="Fermer"
-					id="closePopup"
-					class="closePopupBtn"
-				/>
-
-				<h1 class="h1popupcontent">Popup Content</h1>
-				<!-- <button id="closePopup">Fermer</button> -->
-				<div class="grid-container">
-					<div class="grid-item item1" class="item1">
+				<div class="overlay-popup">
+					<div class="popup-header">
+						<h2 class="popup-title">Digital Event 2024</h2>
 						<img
-							class="item1 popupclick clickable click1"
-							src="./planetpopup/ar3d.png"
-							alt="Item 1"
+							src="./planetpopup/close.svg"
+							alt="Fermer"
+							id="closePopup"
+							class="closePopupBtn"
 						/>
 					</div>
-					<div class="grid-item item2">
-						<img
-							class="item2 popupclick clickable click2"
-							src="./planetpopup/creativecoding.png"
-							alt="Item 2"
-						/>
+					<!--  -->
+					<div class="grid-container">
+						<div class="grid-item item1" class="item1">
+							<img
+								class="item1 popupclick clickable click1"
+								src="./planetpopup/ar3d.png"
+								alt="Item 1"
+							/>
+						</div>
+						<div class="grid-item item2">
+							<img
+								class="item2 popupclick clickable click2"
+								src="./planetpopup/creativecoding.png"
+								alt="Item 2"
+							/>
+						</div>
+						<div class="grid-item item3">
+							<img
+								class="item3 popupclick clickable click3"
+								src="./planetpopup/drone.png"
+								alt="Item 3"
+							/>
+						</div>
+						<div class="grid-item item4">
+							<img
+								class="item4 popupclick clickable click4"
+								src="./planetpopup/escapegame.png"
+								alt="Item 4"
+							/>
+						</div>
+						<div class="grid-item item5">
+							<img
+								class="item5 popupclick clickable click5"
+								src="./planetpopup/fakevideo.png"
+								alt="Item 5"
+							/>
+						</div>
+						<div class="grid-item item6">
+							<img
+								class="item6 popupclick clickable click6"
+								src="./planetpopup/gamedesign.png"
+								alt="Item 6"
+							/>
+						</div>
+						<div class="grid-item item7">
+							<img
+								class="item7 popupclick clickable click7"
+								src="./planetpopup/makingof.png"
+								alt="Item 7"
+							/>
+						</div>
+						<div class="grid-item item8">
+							<img
+								class="item8 popupclick clickable click8"
+								src="./planetpopup/photoreportage.png"
+								alt="Item 8"
+							/>
+						</div>
+						<div class="grid-item item9">
+							<img
+								class="item9 popupclick clickable click9"
+								src="./planetpopup/podcast.png"
+								alt="Item 9"
+							/>
+						</div>
+						<div class="grid-item item10">
+							<img
+								class="item10 popupclick clickable click10"
+								src="./planetpopup/popcorn.png"
+								alt="Item 10"
+							/>
+						</div>
+						<div class="grid-item item11">
+							<img
+								class="item11 popupclick clickable click11"
+								src="./planetpopup/shooting.png"
+								alt="Item 11"
+							/>
+						</div>
+						<div class="grid-item item12">
+							<img
+								class="item12 popupclick clickable click12"
+								src="./planetpopup/siteweb.png"
+								alt="Item 12"
+							/>
+						</div>
+						<div class="grid-item item13">
+							<img
+								class="item13 popupclick clickable click13"
+								src="./planetpopup/storytelling.png"
+								alt="Item 13"
+							/>
+						</div>
+						<div class="grid-item item14">
+							<img
+								class="item14 popupclick clickable click14"
+								src="./planetpopup/teamorga.png"
+								alt="Item 14"
+							/>
+						</div>
+						<div class="grid-item item15">
+							<img
+								class="item15 popupclick clickable click15"
+								src="./planetpopup/videomapping.png"
+								alt="Item 15"
+							/>
+						</div>
 					</div>
-					<div class="grid-item item3">
-						<img
-							class="item3 popupclick clickable click3"
-							src="./planetpopup/drone.png"
-							alt="Item 3"
-						/>
-					</div>
-					<div class="grid-item item4">
-						<img
-							class="item4 popupclick clickable click4"
-							src="./planetpopup/escapegame.png"
-							alt="Item 4"
-						/>
-					</div>
-					<div class="grid-item item5">
-						<img
-							class="item5 popupclick clickable click5"
-							src="./planetpopup/fakevideo.png"
-							alt="Item 5"
-						/>
-					</div>
-					<div class="grid-item item6">
-						<img
-							class="item6 popupclick clickable click6"
-							src="./planetpopup/gamedesign.png"
-							alt="Item 6"
-						/>
-					</div>
-					<div class="grid-item item7">
-						<img
-							class="item7 popupclick clickable click7"
-							src="./planetpopup/makingof.png"
-							alt="Item 7"
-						/>
-					</div>
-					<div class="grid-item item8">
-						<img
-							class="item8 popupclick clickable click8"
-							src="./planetpopup/photoreportage.png"
-							alt="Item 8"
-						/>
-					</div>
-					<div class="grid-item item9">
-						<img
-							class="item9 popupclick clickable click9"
-							src="./planetpopup/podcast.png"
-							alt="Item 9"
-						/>
-					</div>
-					<div class="grid-item item10">
-						<img
-							class="item10 popupclick clickable click10"
-							src="./planetpopup/popcorn.png"
-							alt="Item 10"
-						/>
-					</div>
-					<div class="grid-item item11">
-						<img
-							class="item11 popupclick clickable click11"
-							src="./planetpopup/shooting.png"
-							alt="Item 11"
-						/>
-					</div>
-					<div class="grid-item item12">
-						<img
-							class="item12 popupclick clickable click12"
-							src="./planetpopup/siteweb.png"
-							alt="Item 12"
-						/>
-					</div>
-					<div class="grid-item item13">
-						<img
-							class="item13 popupclick clickable click13"
-							src="./planetpopup/storytelling.png"
-							alt="Item 13"
-						/>
-					</div>
-					<div class="grid-item item14">
-						<img
-							class="item14 popupclick clickable click14"
-							src="./planetpopup/teamorga.png"
-							alt="Item 14"
-						/>
-					</div>
-					<div class="grid-item item15">
-						<img
-							class="item15 popupclick clickable click15"
-							src="./planetpopup/videomapping.png"
-							alt="Item 15"
-						/>
+					<!--  -->
+					<div class="popup-footer">
+						<div class="legal-container">
+							<a href="https://esd-digital-event.com/mentions/">
+								<p>Mentions légales</p>
+							</a>
+							<a href="https://esd-digital-event.com/data">
+								<p>Politique de confidentialité</p>
+							</a>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 		<script type="module" src="main.js"></script>
+		<script type="module" src="loader.js"></script>
+		<script type="module" src="popup.js"></script>
+		<script type="module" src="mobile-embed.js"></script>
 	</body>
 </html>
