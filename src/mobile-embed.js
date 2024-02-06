@@ -1,50 +1,79 @@
-const showEmbedParagraph = document.querySelector("p.showEmbed");
-const embedElement = document.getElementsByClassName("embedElement");
-const closeButton = document.getElementsByClassName("closeModalBtn");
-const modalContent = document.getElementsByClassName("modal-content");
-const main = document.getElementsByClassName("main");
+let footer = document.getElementById("footer");
+let showEmbedParagraph = document.querySelectorAll("p.showEmbed");
+let embedElement = document.querySelectorAll("embed.embedElement");
+let closeButton = document.querySelectorAll("span.closeModalBtn");
+let modalContent = document.querySelectorAll("div.modal-content");
+let main = document.querySelectorAll("div.main");
 
 document.addEventListener("DOMContentLoaded", function () {
-	showEmbedParagraph.addEventListener("click", function () {
-		// MAIN
-		main[0].style.display = "none";
+	showEmbedParagraph.forEach((element) => {
+		element.addEventListener("click", function () {
+			// MAIN
+			main.forEach((element) => {
+				element.style.display = "none";
+			});
 
-		// MODAL
-		modalContent[0].style.width = "95%";
-		modalContent[0].style.height = "95%";
-		modalContent[0].style.position = "fixed";
-		modalContent[0].style.top = "50%";
-		modalContent[0].style.left = "50%";
-		modalContent[0].style.transform = "translate(-50%, -50%)";
-		modalContent[0].style.margin = "0";
-		modalContent[0].style.zIndex = "9999";
+			// MODAL
 
-		// EMBED
-		embedElement[0].style.display = "block";
+			modalContent.forEach((element) => {
+				element.style.width = "95%";
+				element.style.height = "95%";
+				element.style.position = "fixed";
+				element.style.top = "50%";
+				element.style.left = "50%";
+				element.style.transform = "translate(-50%, -50%)";
+				element.style.margin = "0";
+				element.style.zIndex = "9999";
+			});
 
-		// CLOSE BUTTON
-		closeButton[0].style.display = "block";
+			// EMBED
+			embedElement.forEach((element) => {
+				element.style.display = "block";
+			});
+
+			// CLOSE BUTTON
+			closeButton.forEach((element) => {
+				element.style.display = "block";
+			});
+
+			// FOOTER
+			footer.style.zIndex = "-1";
+
+			console.log("clicked");
+		});
 	});
 
-	//   onclick close button
-	closeButton[0].addEventListener("click", function () {
-		// MAIN
-		main[0].style.display = "block";
+	closeButton.forEach((element) => {
+		element.addEventListener("click", function () {
+			// MAIN
+			main.forEach((element) => {
+				element.style.display = "block";
+			});
 
-		// MODAL
-		modalContent[0].style.position = "relative";
-		modalContent[0].style.margin = "30% 0 0 10%";
-		modalContent[0].style.height = "40dvh";
-		modalContent[0].style.width = "55%";
-		modalContent[0].style.top = "unset";
-		modalContent[0].style.left = "unset";
-		modalContent[0].style.transform = "unset";
-		modalContent[0].style.zIndex = "999";
+			// MODAL
+			modalContent.forEach((element) => {
+				element.style.position = "relative";
+				element.style.margin = "30% 0 0 10%";
+				element.style.height = "40dvh";
+				element.style.width = "55%";
+				element.style.top = "unset";
+				element.style.left = "unset";
+				element.style.transform = "unset";
+				element.style.zIndex = "999";
+			});
 
-		// EMBED
-		embedElement[0].style.display = "none";
+			// EMBED
+			embedElement.forEach((element) => {
+				element.style.display = "none";
+			});
 
-		// CLOSE BUTTON
-		closeButton[0].style.display = "none";
+			// CLOSE BUTTON
+			closeButton.forEach((element) => {
+				element.style.display = "none";
+			});
+
+			// FOOTER
+			footer.style.zIndex = "999";
+		});
 	});
 });
