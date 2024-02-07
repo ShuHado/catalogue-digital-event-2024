@@ -59,7 +59,7 @@ body {
 	background-color: black;
 	margin: 0 0 0 3%;
 	width: 37%;
-	height: 80dvh;
+	height: 75dvh;
 	border: 1px solid white;
 	border-radius: 0px 40px;
 	z-index: 99;
@@ -168,7 +168,7 @@ embed {
 	}
 
 	.modal-content {
-		margin: 70% 0 0 5%;
+		margin: 30% 0 0 5%;
 		width: 70%;
 		height: 70%;
 	}
@@ -198,6 +198,9 @@ embed {
 		font-size: 0.5em;
 		top: 1%;
 		transform: translate(-50%, 10%);
+	}
+	.modal-content {
+		margin: 65% 0 0 5%;
 	}
 	#footer {
 		bottom: 0;
