@@ -13,23 +13,38 @@
 	color: white;
 	z-index: 1000;
 	transition: opacity 1s ease-out;
+	background-image: url("./img/nebuleuse.jpg");
+	background-size: cover;
+	background-position: center center;
+	animation: photo-intro-anim 80s ease 0s 1 normal forwards;
+}
+
+#box {
+	margin: 0 20%;
+	padding: 60px;
+	border: 1px solid white;
+	border-radius: 0px 40px 0px 40px;
+	font-family: "Fira Code", monospace;
+	background-color: rgba(0, 0, 0, 0.5);
+	color: white;
 }
 
 .fade-out {
 	opacity: 0;
 }
 
-#splash-screen h1 {
-	color: white;
+#splash-screen h2 {
 	text-align: center;
 	font-size: 8em;
+	text-shadow: 0px 0px 20px #000000;
+}
+
+#splash-screen h3 {
+	font-size: 3em;
 }
 
 #splash-screen p {
 	font-family: "Fira Code", monospace;
-	color: white;
-	text-align: center;
-	padding: 0 20%;
 	font-size: 1.5em;
 }
 
@@ -48,8 +63,13 @@
 	border: 1px solid white;
 	border-radius: 0px 40px 0px 40px;
 	font-family: "Fira Code", monospace;
-	background-color: transparent;
+	background-color: rgba(0, 0, 0, 0.5);
 	color: white;
+	transition: background-color 1s ease-in-out 0s;
+}
+
+#enter-site:hover {
+	background-color: rgba(255, 255, 255, 0.5);
 }
 
 #loader {
@@ -69,6 +89,18 @@
 
 	100% {
 		transform: rotate(360deg);
+	}
+}
+
+@keyframes photo-intro-anim {
+	0% {
+		background-position: center center;
+		background-size: 100%;
+	}
+
+	100% {
+		background-position: center center;
+		background-size: 150%;
 	}
 }
 
