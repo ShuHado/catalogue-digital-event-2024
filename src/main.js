@@ -2,13 +2,11 @@ import * as THREE from "three";
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
-	50,
+	40,
 	window.innerWidth / window.innerHeight,
 	0.1,
 	1000
 );
-// fov 50 , camera.position.x = -0.8;
-// camera.position.y = -0.2
 
 // Ajustement pour les appareils mobiles
 if (window.innerWidth < 1000) {
@@ -31,57 +29,98 @@ const planetsZPositions = [
 
 let currentTargetIndex = 0;
 
-const planets = []; // Stocker les planètes ici pour un accès facile
-const geometry = new THREE.SphereGeometry(1, 64, 32);
-const loader = new THREE.TextureLoader();
+const planets = []; // Stockage des planètes pour un accès facile
+const geometry = new THREE.SphereGeometry(1, 64, 32); // Géométrie des planètes
+const loader = new THREE.TextureLoader(); // Chargeur de textures
 
-// Appliquer l'encodage sRGB à la normal map
+// Chargement de la normal map
 const normalMap = loader.load("./normal/normalclay.jpg");
 
+// Chemins des textures de planètes
 const texturePaths = [
-	"./textures/arlequin.jpg",
-	"./textures/beige.jpg",
-	"./textures/bonbons.jpg",
-	"./textures/desert.jpg",
-	"./textures/feu2.jpg",
-	"./textures/flamme.jpg",
-	"./textures/jaune.jpg",
-	"./textures/ob.jpg",
-	"./textures/ov.jpg",
-	"./textures/pommedamour.jpg",
-	"./textures/rb.jpg",
-	"./textures/roses.jpg",
-	"./textures/sombretest.jpg",
-	"./textures/sully.jpg",
-	"./textures/lr3.jpg",
+	"./img/marble1.jpg",
+	"./img/marble2.jpg",
+	"./img/marble3.jpg",
+	"./img/marble4.jpg",
+	"./img/marble5.jpg",
+	"./img/marble6.jpg",
+	"./img/marble7.jpg",
+	"./img/marble8.jpg",
+	"./img/marble9.jpg",
+	"./img/marble10.jpg",
+	"./img/marble11.jpg",
+	"./img/marble12.jpg",
+	"./img/marble13.jpg",
+	"./img/marble14.jpg",
+	"./img/marble15.jpg",
+	// Ajoutez tous les chemins de texture ici
 ];
 
-// Ajout d'une lumière ambiante pour un éclairage doux global
-const ambientLight = new THREE.AmbientLight(0x404040); // couleur, intensité
-scene.add(ambientLight);
-
-// Ajout d'une lumière directionnelle pour simuler le soleil
-const directionalLight = new THREE.DirectionalLight(0xffffff, 2); // couleur, intensité
-directionalLight.position.set(-10, 7, 10);
-scene.add(directionalLight);
-
-for (let i = 0; i < planetsZPositions.length; i++) {
-	const texture = loader.load(
-		texturePaths[i % texturePaths.length],
-		function (texture) {
-			texture.colorSpace = THREE.SRGBColorSpace;
-		}
-	);
-	const material = new THREE.MeshPhongMaterial({
-		map: texture,
-		normalMap: normalMap,
-		normalScale: new THREE.Vector2(10, 1),
+// Fonction pour charger une texture et retourner une promesse
+function loadTexture(path) {
+	return new Promise((resolve, reject) => {
+		loader.load(
+			path,
+			function (texture) {
+				// Définit l'espace de couleur de la texture
+				texture.encoding = THREE.sRGBEncoding;
+				resolve(texture);
+			},
+			undefined,
+			reject
+		);
 	});
-	const planet = new THREE.Mesh(geometry, material);
-	planet.position.z = planetsZPositions[i];
-	scene.add(planet);
-	planets.push(planet);
 }
+
+// Chargement de toutes les textures de manière asynchrone
+Promise.all(texturePaths.map((path) => loadTexture(path)))
+	.then((textures) => {
+		textures.forEach((texture, index) => {
+			const material = new THREE.MeshPhongMaterial({
+				map: texture,
+				normalMap: normalMap,
+				normalScale: new THREE.Vector2(10, 1),
+			});
+			const planet = new THREE.Mesh(geometry, material);
+			planet.position.z = planetsZPositions[index];
+			scene.add(planet);
+			planets.push(planet);
+		});
+
+		// Ajout des lumières ici pour s'assurer qu'elles sont ajoutées après le chargement des textures
+		const ambientLight = new THREE.AmbientLight(0x404040);
+		scene.add(ambientLight);
+
+		const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
+		directionalLight.position.set(-10, 7, 10);
+		scene.add(directionalLight);
+
+		document.getElementById("loader").style.display = "none";
+
+		// Après le chargement complet, afficher le bouton "Entrer"
+		document.getElementById("enter-site").style.display = "block";
+	})
+	.catch((error) => {
+		console.error("Erreur lors du chargement des textures :", error);
+	});
+
+// for (let i = 0; i < planetsZPositions.length; i++) {
+//   const texture = loader.load(
+//     texturePaths[i % texturePaths.length],
+//     function (texture) {
+//       texture.colorSpace = THREE.SRGBColorSpace;
+//     }
+//   );
+//   const material = new THREE.MeshPhongMaterial({
+//     map: texture,
+//     normalMap: normalMap,
+//     normalScale: new THREE.Vector2(10, 1),
+//   });
+//   const planet = new THREE.Mesh(geometry, material);
+//   planet.position.z = planetsZPositions[i];
+//   scene.add(planet);
+//   planets.push(planet);
+// }
 
 camera.position.z = planetsZPositions[0] + 4;
 camera.position.x = -1;
@@ -117,24 +156,26 @@ function moveCamera() {
 loadIframe(0);
 
 window.addEventListener("wheel", async function (event) {
-	if (!isScrollingAllowed) return; // Empêche le défilement si le verrou est actif
-	isScrollingAllowed = false; // Active le verrou pour empêcher d'autres défilements
+	if (!isScrollingAllowed) return;
+	isScrollingAllowed = false;
 
 	if (event.deltaY > 0) {
 		if (currentTargetIndex < planetsZPositions.length - 1) {
-			await adjustPlanetXPosition(currentTargetIndex, 2, 500);
+			await adjustPlanetXPosition(currentTargetIndex, 2, 100); // Durée réduite pour un mouvement plus rapide
 			currentTargetIndex++;
 			moveCamera();
 		} else {
-			isScrollingAllowed = true; // Libère le verrou si on ne peut pas avancer
+			// Si on est déjà sur la dernière planète, ne fait rien et permet de scroller à nouveau
+			isScrollingAllowed = true;
 		}
 	} else if (event.deltaY < 0) {
 		if (currentTargetIndex > 0) {
 			currentTargetIndex--;
 			moveCamera();
-			await adjustPlanetXPosition(currentTargetIndex, 0, 500);
+			await adjustPlanetXPosition(currentTargetIndex, 0, 500); // Durée réduite pour un mouvement plus rapide
 		} else {
-			isScrollingAllowed = true; // Libère le verrou si on ne peut pas reculer
+			// Si on est sur la première planète, ne fait rien et permet de scroller à nouveau
+			isScrollingAllowed = true;
 		}
 	}
 });
@@ -241,13 +282,20 @@ function animate() {
 	planets.forEach((planet) => {
 		planet.rotation.y += 0.001;
 	});
-	// console.log(camera.fov);
 	renderer.render(scene, camera);
 }
 
 animate();
 
 // POPUP
+
+function resetPlanetsPositionX() {
+	planets.forEach((planet) => {
+		// Réinitialise la position en x pour chaque planète
+		planet.position.x = 0;
+	});
+}
+
 window.addEventListener("contextmenu", (event) => event.preventDefault());
 document.addEventListener("DOMContentLoaded", function () {
 	var nav = document.getElementById("navImage");
@@ -282,6 +330,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		const item = document.querySelector(`.click${i + 1}`);
 		if (item) {
 			item.addEventListener("click", function () {
+				resetPlanetsPositionX(); // Réinitialise les positions en x des planètes
 				// Définit l'index cible pour la caméra basé sur l'item cliqué
 				currentTargetIndex = i;
 				moveCamera(); // Déclenche le mouvement de la caméra
