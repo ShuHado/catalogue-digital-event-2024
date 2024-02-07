@@ -151,6 +151,9 @@ embed {
 	.main {
 		display: block;
 	}
+	canvas {
+		top: -35px !important;
+	}
 	#container {
 		min-height: 92dvh;
 	}

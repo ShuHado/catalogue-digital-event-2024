@@ -85,13 +85,14 @@
 }
 
 #splash-header p {
+	font-family: sans-serif;
 	color: white;
 	text-align: center;
 	padding: 0 20%;
 	/* Ajustez selon le besoin pour le padding */
 	font-size: 1.5em;
 	/* Ajustez la taille de police selon le besoin */
-	margin-top: 20px;
+	margin-top: 10%;
 	/* Espace entre le h1 et le paragraphe */
 }
 
@@ -109,6 +110,7 @@
 
 	#splash-header p {
 		padding: 0 10%;
+		margin-top: 25%;
 		/* Ajustez selon le besoin pour le padding */
 	}
 	#loader {
