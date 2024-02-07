@@ -2,7 +2,7 @@ import * as THREE from "three";
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
-	40,
+	50,
 	window.innerWidth / window.innerHeight,
 	0.1,
 	1000
@@ -184,7 +184,7 @@ window.addEventListener("wheel", async function (event) {
 			moveCamera();
 			moveCamera(currentTargetIndex - 1);
 
-			await adjustPlanetXPosition(currentTargetIndex, 0, 500); // Durée réduite pour un mouvement plus rapide
+			await adjustPlanetXPosition(currentTargetIndex, 0, 150); // Durée réduite pour un mouvement plus rapide
 		} else {
 			// Si on est sur la première planète, ne fait rien et permet de scroller à nouveau
 			isScrollingAllowed = true;
