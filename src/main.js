@@ -38,21 +38,21 @@ const normalMap = loader.load("./normal/normalclay.jpg");
 
 // Chemins des textures de planètes
 const texturePaths = [
-	"./img/marble1.jpg",
-	"./img/marble2.jpg",
-	"./img/marble3.jpg",
-	"./img/marble4.jpg",
-	"./img/marble5.jpg",
-	"./img/marble6.jpg",
-	"./img/marble7.jpg",
-	"./img/marble8.jpg",
-	"./img/marble9.jpg",
-	"./img/marble10.jpg",
-	"./img/marble11.jpg",
-	"./img/marble12.jpg",
-	"./img/marble13.jpg",
-	"./img/marble14.jpg",
-	"./img/marble15.jpg",
+	"./textures/interface_web.jpg",
+	"./textures/creative_coding.jpg",
+	"./textures/popcorn.jpg",
+	"./textures/video_mapping.jpg",
+	"./textures/video_story.jpg",
+	"./textures/video_makingoff.jpg",
+	"./textures/fake_videos.jpg",
+	"./textures/photo_sceno.jpg",
+	"./textures/photo_reportage.jpg",
+	"./textures/podcast.jpg",
+	"./textures/escape_game.jpg",
+	"./textures/drone.jpg",
+	"./textures/game_design.jpg",
+	"./textures/ar_3d.jpg",
+	"./textures/team_orga.jpg",
 	// Ajoutez tous les chemins de texture ici
 ];
 
@@ -138,6 +138,14 @@ function loadIframe(planetIndex) {
 	});
 }
 
+function updateNavImage(planetIndex) {
+	const navImage = document.getElementById("navImage");
+	if (navImage) {
+		const imagePath = `./img/navbar/etape_${planetIndex + 1}.png`; // Les index commencent à 0, donc ajoutez 1 pour correspondre à vos noms de fichiers
+		navImage.src = imagePath;
+	}
+}
+
 function moveCamera() {
 	const targetZ = planetsZPositions[currentTargetIndex] + 4;
 	const delta = (targetZ - camera.position.z) * 0.09;
@@ -149,6 +157,7 @@ function moveCamera() {
 		camera.position.z = targetZ;
 		isScrollingAllowed = true; // Unlock scrolling once the movement is finished
 		loadIframe(currentTargetIndex); // Update iframe display for the current planet
+		updateNavImage(currentTargetIndex);
 	}
 }
 
@@ -164,6 +173,7 @@ window.addEventListener("wheel", async function (event) {
 			await adjustPlanetXPosition(currentTargetIndex, 2, 100); // Durée réduite pour un mouvement plus rapide
 			currentTargetIndex++;
 			moveCamera();
+			moveCamera(currentTargetIndex + 1);
 		} else {
 			// Si on est déjà sur la dernière planète, ne fait rien et permet de scroller à nouveau
 			isScrollingAllowed = true;
@@ -172,12 +182,21 @@ window.addEventListener("wheel", async function (event) {
 		if (currentTargetIndex > 0) {
 			currentTargetIndex--;
 			moveCamera();
+			moveCamera(currentTargetIndex - 1);
+
 			await adjustPlanetXPosition(currentTargetIndex, 0, 500); // Durée réduite pour un mouvement plus rapide
 		} else {
 			// Si on est sur la première planète, ne fait rien et permet de scroller à nouveau
 			isScrollingAllowed = true;
 		}
 	}
+});
+
+// Et de même, lors d'un clic sur un élément de navigation qui change la planète ciblée
+document.querySelectorAll(".navigation-item").forEach((item, index) => {
+	item.addEventListener("click", () => {
+		moveCamera(index); // Supposant que chaque élément de navigation correspond à une planète
+	});
 });
 
 function adjustPlanetXPosition(planetIndex, targetX, duration = 1000) {
@@ -302,17 +321,20 @@ document.addEventListener("DOMContentLoaded", function () {
 	var popup = document.getElementById("popup");
 	var closePopupBtn = document.getElementById("closePopup");
 
-	// imgs.forEach(function (img) {
-	// 	img.addEventListener("click", function () {
-	// 		popup.style.display = "block"; // Affiche la popup
-	// 	});
-	// });
 	nav.addEventListener("click", () => {
-		popup.style.display = "block"; // Cache la popup
+		popup.style.opacity = "0"; // S'assure que l'opacité est à 0
+		popup.style.display = "block"; // Affiche la popup
+		setTimeout(() => {
+			popup.style.opacity = "1"; // Déclenche l'animation d'opacité
+		}, 10); // Un délai court pour permettre au navigateur de reconnaître le changement d'état
 	});
 
 	closePopupBtn.addEventListener("click", function () {
-		popup.style.display = "none"; // Cache la popup
+		// Pour fermer la popup, inversez l'animation
+		popup.style.opacity = "0";
+		setTimeout(() => {
+			popup.style.display = "none";
+		}, 1000); // Attend que l'animation soit terminée pour cacher la popup
 	});
 });
 
