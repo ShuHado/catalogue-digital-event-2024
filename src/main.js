@@ -63,7 +63,7 @@ function loadTexture(path) {
 			path,
 			function (texture) {
 				// Définit l'espace de couleur de la texture
-				texture.encoding = THREE.sRGBEncoding;
+				texture.colorSpace = THREE.SRGBColorSpace;
 				resolve(texture);
 			},
 			undefined,
@@ -144,6 +144,63 @@ function updateNavImage(planetIndex) {
 		const imagePath = `./img/navbar/etape_${planetIndex + 1}.png`; // Les index commencent à 0, donc ajoutez 1 pour correspondre à vos noms de fichiers
 		navImage.src = imagePath;
 	}
+}
+
+let rotationTarget = null;
+
+let isDragging = false;
+let previousMousePosition = {
+	x: 0,
+	y: 0,
+};
+
+if (window.innerWidth > 768) {
+	renderer.domElement.addEventListener("mousedown", onMouseDown, false);
+	renderer.domElement.addEventListener("mousemove", onMouseMove, false);
+	renderer.domElement.addEventListener("mouseup", onMouseUp, false);
+}
+
+function onMouseDown(event) {
+	event.preventDefault();
+
+	const mouse = new THREE.Vector2();
+	const raycaster = new THREE.Raycaster();
+	mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+	mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+	raycaster.setFromCamera(mouse, camera);
+
+	const intersects = raycaster.intersectObjects(planets);
+	if (intersects.length > 0) {
+		isDragging = true;
+		rotationTarget = intersects[0].object;
+		previousMousePosition.x = event.clientX;
+		previousMousePosition.y = event.clientY;
+	}
+}
+
+function onMouseMove(event) {
+	if (!isDragging || !rotationTarget) {
+		return; // Ne fait rien si on n'est pas en train de draguer ou si aucun objet n'est ciblé
+	}
+
+	// Calcul du changement de position de la souris
+	const deltaX = event.clientX - previousMousePosition.x;
+	const deltaY = event.clientY - previousMousePosition.y;
+
+	// Ajustement de la vitesse de rotation
+	const rotationSpeed = 0.005;
+
+	// Application de la rotation à la cible
+	rotationTarget.rotation.y += deltaX * rotationSpeed;
+	rotationTarget.rotation.x += deltaY * rotationSpeed;
+
+	// Mise à jour de la position précédente de la souris
+	previousMousePosition.x = event.clientX;
+	previousMousePosition.y = event.clientY;
+}
+
+function onMouseUp(event) {
+	isDragging = false;
 }
 
 function moveCamera() {
