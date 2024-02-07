@@ -44,7 +44,6 @@
 }
 
 #splash-screen p {
-	font-family: "Fira Code", monospace;
 	font-size: 1.5em;
 }
 
@@ -122,6 +121,9 @@
 		padding: 0;
 	}
 	#splash-screen h2 {
+		font-size: 3em;
+	}
+	#splash-screen h3 {
 		font-size: 24px;
 	}
 
