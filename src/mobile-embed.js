@@ -16,8 +16,8 @@ document.addEventListener("DOMContentLoaded", function () {
 			// MODAL
 
 			modalContent.forEach((element) => {
-				element.style.width = "95%";
-				element.style.height = "95%";
+				element.style.width = "100%";
+				element.style.height = "100%";
 				element.style.position = "fixed";
 				element.style.top = "50%";
 				element.style.left = "50%";
