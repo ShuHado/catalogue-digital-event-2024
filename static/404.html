@@ -9,6 +9,12 @@
 		/>
 		<link rel="shortcut icon" href="./favicon.ico" type="image/x-icon" />
 		<title>ESD Digital Event - Catalogue 2024</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap"
+			rel="stylesheet"
+		/>
 		<style>
 			@font-face {
 				font-family: "QelliaRegular";
@@ -765,7 +771,7 @@
 				color: white;
 				background-color: black;
 				height: 100vh;
-				font-family: "QelliaMedium", monospace;
+				font-family: "QelliaMedium";
 				overflow-y: hidden;
 				overflow-x: hidden;
 			}
@@ -794,18 +800,63 @@
 				margin: 0;
 			}
 			#text-404 {
+				font-family: "Fira Code", monospace;
 				text-align: center;
 			}
 			#text-404 h2 {
-				font-size: 20em;
+				font-family: "QelliaMedium";
+				font-size: 20rem;
 			}
 			#text-404 p {
-				font-size: 1.5em;
-				margin-bottom: 1em;
+				font-size: 1.5rem;
+				margin-bottom: 1rem;
 			}
 			#text-404 a {
-				font-size: 1.5em;
+				font-size: 1.5rem;
 				color: white;
+				text-decoration: none;
+				font-family: "Fira Code", monospace;
+			}
+			#enter-site {
+				margin-top: 20%;
+				padding: 20px 25px;
+				font-size: 30px;
+				cursor: pointer;
+				border: 1px solid white;
+				border-radius: 0px 40px 0px 40px;
+				background-color: transparent;
+				color: white;
+			}
+			@media (max-width: 768px) {
+				#container {
+					min-height: 92dvh;
+				}
+				#header {
+					top: 0;
+					transform: translate(-50%, 5%);
+				}
+
+				#header h1 {
+					font-size: 28px;
+					text-wrap: nowrap;
+				}
+			}
+
+			@media (max-width: 425px) {
+				#container {
+					margin: 5.5%;
+				}
+				#header {
+					font-size: 0.5em;
+					top: 1%;
+					transform: translate(-50%, 10%);
+				}
+				#text-404 h2 {
+					font-size: 10rem;
+				}
+				#text-404 a {
+					font-size: 1.3rem;
+				}
 			}
 		</style>
 	</head>
@@ -820,7 +871,9 @@
 			<div id="text-404">
 				<h2>404</h2>
 				<p>Page non trouvée</p>
-				<a href="index.html">Retour au catalogue</a>
+				<button id="enter-site"
+					><a href="index.html">Retour au catalogue</a></button
+				>
 			</div>
 		</div>
 	</body>
