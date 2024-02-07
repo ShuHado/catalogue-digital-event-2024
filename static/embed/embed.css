@@ -4,15 +4,15 @@
 }
 @font-face {
 	font-family: "QelliaBold";
-	src: url("/fonts/Qellia/Qellia-Bold.otf") format("opentype");
+	src: url("../fonts/Qellia/Qellia-Bold.otf") format("opentype");
 }
 @font-face {
 	font-family: "QelliaLight";
-	src: url("/fonts/Qellia/Qellia-Light.otf") format("opentype");
+	src: url("../fonts/Qellia/Qellia-Light.otf") format("opentype");
 }
 @font-face {
 	font-family: "QelliaMedium";
-	src: url("/fonts/Qellia/Qellia-Medium.otf") format("opentype");
+	src: url("../fonts/Qellia/Qellia-Medium.otf") format("opentype");
 }
 body {
 	color: white;
@@ -21,12 +21,14 @@ body {
 	overflow: -moz-scrollbars-none;
 	margin: 0;
 	font-family: "QelliaRegular";
+	overflow-x: hidden;
 }
 body::-webkit-scrollbar {
 	display: none;
 }
 p {
 	font-size: 12px;
+	margin: 0;
 	font-family: "Fira Code", monospace;
 }
 h2 {
@@ -40,174 +42,887 @@ h3 {
 	font-size: 25px;
 }
 
-.container {
-	padding: 20px;
+h4 {
+	margin: 0;
+	font-family: "QelliaMedium";
+	font-size: 20px;
 }
+
+img {
+	max-width: 100%;
+	border: 1px solid white;
+}
+
+.container,
+.a,
+.b,
+.c,
+.d,
+.e,
+.f,
+.f-uni,
+.g-1,
+.g-2,
+.g-2-reverse,
+.h,
+.i,
+.i-reverse,
+.j,
+.k,
+.l,
+.m,
+.n,
+.n-reverse,
+.o,
+.p,
+.p-reverse,
+.q,
+.r,
+.s,
+.r-reverse,
+.z,
+.end {
+	padding: 10px 20px;
+}
+
+/* -------------------- Section INTRO -------------------- */
 
 .banner img {
 	object-fit: cover;
 	width: 100%;
-	height: 100%;
+	min-height: 100%;
 	border-radius: 0 40px 0 0;
 }
 
 .center-line {
 	display: flex;
-	justify-content: center;
+	gap: 20px;
 }
 
 .line {
-	width: 90%;
-	height: 1px;
+	width: 100%;
+	min-height: 1px;
 	background-color: white;
 	margin: 20px 0;
 	display: block;
 }
 
-.section-1 {
+/* -------------------- Section A -------------------- */
+
+.container-a {
 	display: flex;
-	justify-content: space-between;
-	/* height: 100vh; */
+	gap: 20px;
 }
 
-.section-1-left {
+.container-a img {
+	object-fit: cover;
+	width: 100%;
+	min-height: 100%;
+}
+
+.section-a-left {
 	width: 30%;
-	/* height: 100%; */
-	/* background-color: blue; */
+	min-height: 100%;
 }
 
-.section-1-right {
-	width: 60%;
-	/* height: 100%; */
-	/* background-color: red; */
+.section-a-right {
+	width: 70%;
+	min-height: 100%;
 	display: flex;
 	flex-direction: column;
+	gap: 20px;
+}
+
+.section-a-right img {
+	object-fit: cover;
+	width: 100%;
+	min-height: 100%;
+}
+
+.section-a-left img,
+.section-a-left video {
+	width: 100%;
+	min-height: 100%;
+}
+
+/* .section-a-right {
+  width: 70%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.section-a-right img {
+  object-fit: cover;
+  width: 100%;
+}
+
+.section-a-right > div:nth-child(1) {
+  max-height: 10%;
+  overflow: hidden;
+}
+
+.section-a-right > div:nth-child(1) img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+} */
+
+/* -------------------- Divider -------------------- */
+
+.divider {
+	padding: 10px 20px;
+}
+
+.divider img {
+	border: 0px;
+}
+
+/* -------------------- Section C -------------------- */
+
+.container-c {
+	display: flex;
+	gap: 20px;
+	min-height: 50svh;
+}
+
+.section-c-left {
+	width: 60%;
+	min-height: 100%;
+}
+
+.section-c-right {
+	width: 40%;
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.section-c-left img {
+	object-fit: cover;
+	width: 100%;
+	min-height: 100%;
+}
+
+.section-c-right img {
+	object-fit: cover;
+	width: 100%;
+	min-height: 100%;
+}
+
+/* -------------------- Section D -------------------- */
+
+.d img {
+	object-fit: cover;
+	width: 100%;
+	min-height: 100%;
+}
+
+/* -------------------- Section E -------------------- */
+
+.container-e {
+	display: flex;
 	justify-content: space-between;
 }
 
-.section-1-right img,
-.section-1-left img,
-.section-2-right img {
-	object-fit: contain;
-	width: 100%;
-	height: 100%;
+.section-e-left {
+	width: 60%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 1px solid white;
 }
 
-.divider {
+.section-e-right {
+	width: 35%;
+	border: 1px solid white;
+}
+
+.e img {
+	object-fit: cover;
+	width: 100%;
+	min-height: 90%;
+}
+
+.e h3 {
+	padding-left: 10px;
+	padding-top: 10px;
+}
+
+.e .b {
 	padding: 20px 0px;
 }
 
-.section-2 {
+/* -------------------- Section F -------------------- */
+
+.container-f {
+	display: flex;
+	gap: 20px;
+	width: 100%;
+	align-items: flex-start;
+}
+
+.col-f-left {
+	width: 33.33%;
+	min-height: 100%;
+	display: flex;
+	justify-content: flex-start;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.col-f-center {
+	width: 33.33%;
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+.col-f-left {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.col-f-right {
+	width: 33.33%;
+	min-height: 100%;
+}
+
+.f img {
+	object-fit: cover;
+	width: 100%;
+	min-height: 100%;
+}
+
+.f ul {
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+/* -------------------- Section F-uni -------------------- */
+
+.container-f-uni {
+	display: flex;
+	gap: 20px;
+	width: 100%;
+}
+
+/* .container-f-uni p {
+  font-size: 10px;
+} */
+
+.col-f-uni-left {
+	width: 33%;
+	min-height: 100%;
+	display: flex;
+	justify-content: flex-start;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.col-f-uni-center {
+	width: 33%;
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.col-f-uni-right {
+	width: 33%;
+	min-height: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.f-uni img {
+	object-fit: cover;
+	width: 100%;
+	min-height: 100%;
+}
+
+/* -------------------- Section G-1 -------------------- */
+
+.section-g1 {
 	display: flex;
 	justify-content: space-between;
+	gap: 20px;
+	align-items: flex-start;
 }
 
-.section-2-left {
-	width: 60%;
-	background-color: blue;
+.section-g1-left {
+	width: 33.33%;
 }
 
-.section-2-right {
-	width: 30%;
+.section-g1-center {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	/* background-color: brown; */
+	width: 33.33%;
+	gap: 20px;
 }
 
-.section-2-left img {
+.section-g1-right {
+	width: 33.33%;
+}
+
+.section-g1 img {
+	object-fit: cover;
+	width: 100%;
+	min-height: 100%;
+}
+
+/* -------------------- Section G-2 -------------------- */
+
+.section-g2 {
+	display: flex;
+	gap: 20px;
+	align-items: flex-end;
+}
+
+.section-g2-left {
+	width: 33.3%;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.section-g2-right {
+	width: 33.3%;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.section-g2-center {
+	width: 33.3%;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.section-g2 img {
+	width: 100%;
+}
+/* -------------------- Section G-2 reverse -------------------- */
+
+.section-g2-reverse {
+	display: flex;
+	gap: 20px;
+	align-items: flex-start;
+}
+
+.section-g2-reverse-left,
+.section-g2-reverse-center,
+.section-g2-reverse-right {
+	width: 33.3%;
+	display: flex;
+	flex-direction: column-reverse;
+	gap: 20px;
+}
+
+.section-g2-reverse img {
 	object-fit: cover;
 	width: 100%;
 	height: 100%;
+	max-height: 100%;
 }
 
-.illu-ux {
-	margin-top: 10px;
+.section-g2-reverse-center img {
+	min-height: 370px;
+	object-fit: fill;
 }
 
-.illu-full {
+/* -------------------- Section H -------------------- */
+
+.h img,
+.h video {
+	object-fit: cover;
 	width: 100%;
-	margin: 40px 0;
+	min-height: 100%;
 }
 
-.illu-full img {
-	object-fit: contain;
+/* -------------------- Section I -------------------- */
+
+.container-i {
+	display: flex;
+	gap: 20px;
+}
+
+.section-i-left {
+	width: 70%;
+	min-height: 100%;
+}
+
+.section-i-right {
+	width: 30%;
+	min-height: 100%;
+}
+
+.i img {
+	object-fit: cover;
+	width: 100%;
+}
+
+/* -------------------- Section I Reverse -------------------- */
+
+.container-i-reverse {
+	display: flex;
+	gap: 20px;
+}
+
+.section-i-left-reverse {
+	width: 30%;
+	min-height: 100%;
+}
+
+.section-i-right-reverse {
+	width: 70%;
+	min-height: 100%;
+}
+
+.i-reverse img {
+	object-fit: cover;
 	width: 100%;
 	height: 100%;
+	max-height: 100%;
 }
 
-.section-3 img {
-	object-fit: contain;
+/* -------------------- Section J -------------------- */
+
+.section-j-left,
+.section-j-center,
+.section-j-right {
+	width: 33.33%;
+}
+
+.container-j {
+	display: flex;
+	gap: 20px;
+}
+
+.j img {
+	object-fit: cover;
 	width: 100%;
-	height: 100%;
+	min-height: 100%;
 }
 
-.section-3 {
+/* -------------------- Section K -------------------- */
+
+.container-k {
+	display: flex;
+	gap: 20px;
+	width: 100%;
+}
+
+.k img {
+	object-fit: cover;
+	width: 100%;
+	min-height: 100%;
+}
+
+.section-k-left {
+	width: 33%;
+	min-height: 100%;
+}
+
+.section-k-center {
+	width: 33%;
+	display: flex;
+	flex-direction: column;
+	min-height: 100%;
+	justify-content: space-between;
+}
+
+.section-k-right {
+	width: 33%;
+	min-height: 100%;
+}
+
+/* -------------------- Section L -------------------- */
+
+.container-l {
+	display: flex;
+	gap: 20px;
+	width: 100%;
+}
+
+.l img {
+	object-fit: cover;
+	width: 100%;
+	min-height: 100%;
+}
+
+.section-l-left {
+	display: flex;
+	flex-direction: column;
+	width: 33.33%;
+	min-height: 100%;
+	gap: 20px;
+}
+
+.section-l-center {
+	width: 33.33%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	min-height: 100%;
+	gap: 20px;
+}
+
+.section-l-right {
+	display: flex;
+	flex-direction: column;
+	width: 33.33%;
+	min-height: 100%;
+	gap: 20px;
+}
+
+/* -------------------- Section M -------------------- */
+
+.m img {
+	object-fit: cover;
+	width: 100%;
+	min-height: 100%;
+}
+
+/* -------------------- Section N -------------------- */
+
+.container-n {
+	display: flex;
+	gap: 20px;
+	align-items: flex-start;
+}
+
+/* .container-n img {
+  width: 100%;
+} */
+
+.section-n-left {
+	min-height: 490px;
+	width: 30%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.section-n-right {
+	min-height: 490px;
+	width: 70%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.s-n-r-in {
+	display: flex;
+	gap: 20px;
+}
+
+.in-right {
+	width: 50%;
+}
+
+.in-left {
+	width: 50%;
+}
+
+/* -------------------- Section N-reverse -------------------- */
+
+.container-n-reverse {
+	display: flex;
+	gap: 20px;
+	align-items: flex-start;
+}
+
+.container-n-reverse img {
+	width: 100%;
+	min-height: 100%;
+}
+
+.section-n-reverse-left {
+	min-height: 490px;
+	width: 70%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.section-n-reverse-right {
+	min-height: 490px;
+	width: 30%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.s-n-r-in-reverse {
+	display: flex;
+	gap: 20px;
+}
+
+.in-reverse-right {
+	width: 50%;
+}
+
+.in-reverse-left {
+	width: 50%;
+}
+
+/* -------------------- Section O -------------------- */
+
+.o img {
+	object-fit: cover;
+	width: 100%;
+	min-height: 100%;
+}
+
+/* -------------------- Section P -------------------- */
+
+.container-p {
+	display: flex;
+	gap: 20px;
+}
+
+.p img {
+	width: 100%;
+	min-height: 100%;
+	/* object-fitcover; */
+}
+
+.section-p-left {
+	width: 70%;
 	display: flex;
 	justify-content: space-between;
-	margin: 40px 0;
 }
 
-.section-3-left {
-	width: 60%;
-	/* background-color: blue; */
-}
-
-.section-3-right {
+.section-p-right {
 	width: 30%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 20px;
 }
 
-.section-4 {
+.section-p-right-top {
 	display: flex;
 	justify-content: space-between;
-	margin: 40px 0;
 }
 
-.section-5-top {
+.section-p-right-bottom {
 	display: flex;
 	justify-content: space-between;
-	margin: 40px 0;
+}
+/* -------------------- Section P-reverse -------------------- */
+
+.container-p-reverse {
+	display: flex;
+	gap: 20px;
 }
 
-.section-5-left-top {
+.p-reverse img {
+	width: 100%;
+	min-height: 100%;
+	object-fit: cover;
+}
+
+.section-p-reverse-left {
 	width: 30%;
-	/* background-color: blue; */
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
 }
 
-.section-5-right-top {
-	width: 30%;
+.section-p-reverse-right {
+	width: 70%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
 
-.section-5-center-top {
+.section-p-reverse-right-top {
+	display: flex;
+	justify-content: space-between;
+}
+
+.section-p-reverse-right-bottom {
+	display: flex;
+	justify-content: space-between;
+}
+
+/* -------------------- Section Q -------------------- */
+
+.container-q {
+	display: flex;
+	gap: 20px;
+	align-items: flex-start;
+	align-content: stretch;
+}
+
+.container-q p {
+	font-size: 11px;
+	margin: 0;
+}
+
+.section-q-left,
+.section-q-center,
+.section-q-right {
+	display: flex;
+	width: 33.33%;
+	gap: 20px;
+	flex-direction: column;
+}
+
+.q img {
+	object-fit: cover;
+	width: 100%;
+	min-height: 100%;
+}
+
+/* -------------------- Section R -------------------- */
+
+.container-r {
+	display: flex;
+	gap: 20px;
+	align-items: flex-start;
+	align-content: stretch;
+}
+
+/* -------------------- Section R-reverse -------------------- */
+
+.container-r-reverse {
+	display: flex;
+	gap: 20px;
+	align-items: flex-start;
+	align-content: stretch;
+}
+
+.container-r-reverse img {
+	width: 100%;
+	min-height: 100%;
+}
+
+.section-r-reverse-left {
+	width: 70%;
+}
+
+.section-r-reverse-right {
 	display: flex;
 	flex-direction: column;
 	width: 30%;
+	gap: 20px;
 }
-.section-5-center-top img {
-	object-fit: contain;
+
+/* -------------------- Section S -------------------- */
+
+.container-s {
+	display: flex;
+	gap: 20px;
+}
+
+/* -------------------- Section Z -------------------- */
+
+.z {
+	padding: 10px 20px;
+}
+
+.container-z {
+	display: flex;
+	gap: 20px;
 	width: 100%;
-	height: 100%;
 }
 
-.section-5-bottom {
-	display: flex;
-	justify-content: space-between;
+.z img {
+	object-fit: cover;
+	width: 100%;
+	min-height: 100%;
 }
 
-.section-5-left-bottom {
+.section-z-left {
 	width: 30%;
+	min-height: 100%;
+}
+
+.section-z-right {
+	width: 70%;
+	min-height: 100%;
+}
+
+/* -------------------- Section FIN -------------------- */
+
+.settings p {
+	font-weight: bold;
+}
+
+.settings {
+	display: flex;
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+}
+
+.name,
+.first-name,
+.faction {
+	width: 33.3%;
+}
+
+.person {
+	display: flex;
+	border-bottom: 1px solid white;
+}
+
+/* -------------------- Section F v2 -------------------- */
+
+.f-v2 {
+	padding: 10px 20px;
+}
+
+.container-f-v2 {
+	display: flex;
+	gap: 20px;
+	width: 100%;
+	/* padding: 10px 20px; */
+}
+
+.col-f-left-v2 {
+	width: 33%;
+	min-height: 100%;
+	display: flex;
+	justify-content: flex-start;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	gap: 20px;
 }
 
-.section-5-right-bottom {
-	width: 30%;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
+.col-f-center-v2 {
+	width: 33%;
+	min-height: 100%;
 }
 
-.section-5-center-bottom {
-	width: 30%;
+.col-f-right-v2 {
+	width: 33%;
+	min-height: 100%;
 }
+
+.f-v2 img {
+	object-fit: cover;
+	width: 100%;
+	min-height: 100%;
+}
+
+.f-v2 .b {
+	padding: 20px 0px;
+}
+
+/* ---------------------------------------- */
+
+/* iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+} */

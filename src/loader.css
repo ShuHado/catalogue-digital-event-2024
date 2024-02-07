@@ -13,7 +13,7 @@
 	color: white;
 	z-index: 1000;
 	transition: opacity 1s ease-out;
-	background-image: url("./img/nebuleuse.jpg");
+	background-image: url("/img/nebuleuse.jpg");
 	background-size: cover;
 	background-position: center center;
 	animation: photo-intro-anim 80s ease 0s 1 normal forwards;
@@ -107,23 +107,26 @@
 /* media queries */
 
 @media (max-width: 768px) {
-	#splash-screen h1 {
+	#splash-screen h2 {
 		font-size: 6em;
 	}
 
-	#splash-screen p {
+	/* #splash-screen p {
 		padding: 0 10%;
-	}
+	} */
 }
 
 @media (max-width: 425px) {
-	#splash-screen h1 {
-		font-size: 4em;
-		margin-top: 20%;
+	#box {
+		margin: 0 10%;
+		padding: 0;
+	}
+	#splash-screen h2 {
+		font-size: 24px;
 	}
 
 	#splash-screen p {
-		font-size: 1.2em;
-		padding: 0 5%;
+		font-size: 15px;
+		/* padding: 0 5%; */
 	}
 }
