@@ -26,6 +26,9 @@ body {
 body::-webkit-scrollbar {
 	display: none;
 }
+a {
+	color: #c9c9c9;
+}
 p {
 	font-size: 12px;
 	margin: 0;
@@ -51,6 +54,10 @@ h4 {
 img {
 	max-width: 100%;
 	border: 1px solid white;
+}
+
+li {
+	list-style: none;
 }
 
 .container,
@@ -85,6 +92,20 @@ img {
 	padding: 10px 20px;
 }
 
+.main {
+	transition: 0.5s;
+}
+
+.main img {
+	transition: 0.5s;
+	filter: saturate(0);
+}
+
+.main img:hover {
+	transition: 0.5s;
+	filter: saturate(1);
+}
+
 /* -------------------- Section INTRO -------------------- */
 
 .banner img {
@@ -92,6 +113,7 @@ img {
 	width: 100%;
 	min-height: 100%;
 	border-radius: 0 40px 0 0;
+	border: none;
 }
 
 .center-line {
@@ -272,6 +294,11 @@ img {
 	flex-direction: column;
 	gap: 20px;
 }
+.col-f-left div {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
 
 .col-f-center {
 	width: 33.33%;
@@ -379,10 +406,14 @@ img {
 
 /* -------------------- Section G-2 -------------------- */
 
+.end p {
+	padding: 10px 20px;
+}
+
 .section-g2 {
 	display: flex;
 	gap: 20px;
-	align-items: flex-end;
+	align-items: center;
 }
 
 .section-g2-left {
@@ -499,6 +530,11 @@ img {
 .section-j-center,
 .section-j-right {
 	width: 33.33%;
+}
+
+.section-j-center {
+	display: flex;
+	align-items: center;
 }
 
 .container-j {
@@ -658,7 +694,8 @@ img {
 	width: 30%;
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	/* justify-content: space-between; */
+	gap: 20px;
 }
 
 .s-n-r-in-reverse {
@@ -874,6 +911,10 @@ img {
 .person {
 	display: flex;
 	border-bottom: 1px solid white;
+}
+
+.end p {
+	font-size: 10px;
 }
 
 /* -------------------- Section F v2 -------------------- */

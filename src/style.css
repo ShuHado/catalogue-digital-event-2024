@@ -165,6 +165,7 @@ embed {
 	#header h1 {
 		font-size: 28px;
 		text-wrap: nowrap;
+        white-space: nowrap;
 	}
 
 	.modal-content {
