@@ -53,9 +53,9 @@ document.addEventListener("DOMContentLoaded", function () {
 			// MODAL
 			modalContent.forEach((element) => {
 				element.style.position = "relative";
-				element.style.margin = "30% 0 0 10%";
-				element.style.height = "40dvh";
-				element.style.width = "55%";
+				element.style.margin = "30% 0 0 5%";
+				element.style.height = "70%";
+				element.style.width = "70%";
 				element.style.top = "unset";
 				element.style.left = "unset";
 				element.style.transform = "unset";

@@ -1,68 +1,43 @@
-/* Style général pour la popup */
 .popup {
 	position: fixed;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(0, 0, 0, 0.8);
+	background-color: rgba(0, 0, 0, 0.95);
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
 	z-index: 1000;
 	overflow: hidden;
-	opacity: 0;
-	transition: opacity 1s ease;
 }
 
-/* Overlay interne avec bordure */
 .overlay-popup {
-	background: no-repeat center/87% url("/img/orbit.png");
-	/* background: no-repeat center/75% url("./img/orbit.png"); */
-	border: 2px solid white;
+	background: no-repeat center/90% url("/img/orbit.svg");
+	border: 1px solid white;
 	border-radius: 0px 40px 0px 40px;
 	padding: 20px;
-	/* Espacement intérieur pour éloigner le contenu de la bordure */
 	margin: 2.5%;
-	/* Espacement extérieur pour créer l'effet visuel désiré */
 	width: 95%;
-	/* Ajustement de la largeur en fonction de la marge */
 	height: 90%;
-	/* Ajustement de la hauteur en fonction de la marge */
 	box-sizing: border-box;
-	/* Inclure la bordure et le padding dans la largeur/hauteur totale */
 	position: relative;
-	/* Position relative pour le positionnement absolu des enfants */
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	/* Espacement vertical entre les éléments */
 }
 
-/* Style pour le header de la popup */
 .popup-header {
-	width: calc(100% - 40px);
-	/* Ajustement en fonction du padding */
-	display: flex;
-	justify-content: center;
-	/* Centrer le titre horizontalement */
 	position: absolute;
-	top: -2%;
-	/* Ajustement pour le placer sur la bordure */
-	background-color: transparent;
-	align-items: center;
+	top: 0%;
+	padding: 0 1%;
+	background-color: black;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 .popup-header h2 {
-	background-color: black;
+	font-size: 32px;
 	color: white;
-	padding: 0 20px;
-	border-radius: 20px;
-}
-
-.clickable {
-	cursor: pointer;
-	width: 20%;
+	text-align: center;
+	white-space: nowrap;
 }
 
 .grid-container {
@@ -71,61 +46,68 @@
 	grid-template-rows: repeat(5, 1fr);
 	grid-column-gap: 0px;
 	grid-row-gap: 0px;
-	margin-top: auto;
-	margin-bottom: auto;
-	height: 80%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 80%;
+	max-height: 80%;
+}
+
+.grid-container div {
+	color: white;
 }
 
 .grid-item {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	text-align: center;
+	/* white-space: nowrap; */
+	font-family: "Fira Code", monospace;
+	font-size: 12px;
 }
 
 .grid-item img {
-	max-width: 100%;
-	/* Empêche l'image de dépasser la largeur du conteneur */
-	max-height: 100%;
-	/* Empêche l'image de dépasser la hauteur du conteneur */
+	cursor: pointer;
+	max-width: 4vw;
+	object-fit: cover;
 }
 
 .item1 {
 	grid-area: 1 / 2 / 2 / 3;
-	margin-left: -20%;
-	margin-bottom: -10%;
-	width: 47%;
+	margin-left: -41%;
+	margin-top: 13%;
 }
 
 .item2 {
 	grid-area: 1 / 3 / 2 / 4;
-	margin-top: -10%;
+	margin-top: 0%;
 }
 
 .item3 {
 	grid-area: 1 / 4 / 2 / 5;
-	margin-right: -290%;
-	margin-bottom: -10%;
-	width: 47%;
+	margin-right: -41%;
+	margin-top: 13%;
 }
 
 .item4 {
 	grid-area: 2 / 4 / 3 / 5;
 	margin-right: 50%;
-	width: 47%;
+	margin-top: 10%;
 }
 
 .item5 {
 	grid-area: 2 / 2 / 3 / 3;
 	margin-left: 50%;
-	width: 47%;
+	margin-top: 10%;
 }
 
 .item6 {
 	grid-area: 3 / 1 / 4 / 2;
+	margin-left: -30%;
 }
 
 .item7 {
 	grid-area: 3 / 2 / 4 / 3;
+	margin-left: -62%;
 }
 
 .item8 {
@@ -134,175 +116,205 @@
 
 .item9 {
 	grid-area: 3 / 4 / 4 / 5;
+	margin-right: -62%;
 }
 
 .item10 {
 	grid-area: 3 / 5 / 4 / 6;
+	margin-right: -30%;
 }
 
 .item11 {
 	grid-area: 4 / 4 / 5 / 5;
-	width: 47%;
-	margin-left: -8%;
+	margin-right: 50%;
 }
 
 .item12 {
 	grid-area: 4 / 2 / 5 / 3;
 	margin-left: 50%;
-	width: 47%;
 }
 
 .item13 {
 	grid-area: 5 / 2 / 6 / 3;
-	margin-right: 100%;
-	width: 47%;
+	margin-left: -41%;
 }
 
 .item14 {
 	grid-area: 5 / 3 / 6 / 4;
-	margin-bottom: -20%;
+	margin-top: 14%;
 }
 
 .item15 {
 	grid-area: 5 / 4 / 6 / 5;
-	margin-left: 60%;
-	width: 47%;
+	margin-right: -41%;
 }
 
-/* Bouton de fermeture */
 .closePopupBtn {
 	position: absolute;
-	right: 0%;
-	/* Alignement avec le bord droit */
-	top: 100%;
-	/* Ajustement pour alignement vertical */
+	right: 2%;
+	top: 4%;
 	cursor: pointer;
+	object-fit: cover;
 	background-size: cover;
+	height: 3dvh;
 }
 
-/* Style pour le footer de la popup */
 .popup-footer {
-	width: calc(100% - 40px);
-	/* Ajustement en fonction du padding */
 	position: absolute;
-	bottom: -3%;
-	/* Ajustement pour le placer à l'intérieur de la bordure */
-	background-color: transparent;
+	bottom: 0%;
 	text-align: center;
-}
-
-/* Conteneur pour les mentions légales et politique de confidentialité */
-.legal-container {
 	background-color: black;
-	color: white;
-	padding: 0px 20px;
-	/* Ajustez le padding selon le besoin */
-	display: inline-block;
-	/* Utilisez inline-block pour le centrer avec text-align */
-	margin: 0px 0;
-	/* Espace entre le h3 et le p */
+	padding: 0 20px;
+	left: 50%;
+	transform: translate(-50%, 50%);
 }
 
-/* Styles individuels pour h3 et p si nécessaire */
-.popup-footer a,
-.popup-footer p {
-	margin: 5px 0;
+.popup-footer a {
+	margin: 10px 0;
+	display: block;
+	font-family: "Fira Code", monospace;
 	text-decoration: none;
 	color: white;
-	/* Ajustez la marge pour espacer les éléments verticalement */
 }
 
 @media (max-width: 768px) {
+	.overlay-popup {
+		height: 95%;
+		background: none;
+	}
+
+	.overlay-popup::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: no-repeat center/100% url("/img/orbit.svg");
+		transform: rotate(90deg) !important;
+	}
+
+	.popup-header h2 {
+		font-size: 28px;
+	}
+
 	.grid-container {
-		/* Augmentez l'espacement entre les éléments si nécessaire */
-		gap: 10px;
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-template-rows: repeat(7, 1fr);
+		grid-column-gap: 0px;
+		grid-row-gap: 0px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 90%;
+		height: 90%;
+		margin: 0;
+	}
+
+	.closePopupBtn {
+		right: 6%;
 	}
 
 	.grid-item img {
-		/* Ajustez la taille des images en pourcentage pour un contrôle plus fin */
-		width: 70%;
-		height: auto;
-		/* Pour maintenir l'aspect ratio */
+		max-width: 8vw;
 	}
 
-	/* Si nécessaire, ajustez les tailles des titres pour les petits écrans */
-	.popup-header h2 {
-		font-size: smaller;
-		/* Ou une taille de police spécifique en px ou em */
+	.popup-header {
+		top: 1%;
 	}
 
-	.popup-footer h3,
-	.popup-footer p {
-		font-size: smaller;
-		/* Ajustez la taille de police comme pour le h2 */
+	.popup-footer {
+		white-space: nowrap;
+		font-size: 14px;
+	}
+
+	.item1 {
+		grid-area: 1 / 2 / 2 / 3;
+		margin-left: 0;
+		margin-top: -13%;
+	}
+
+	.item2 {
+		grid-area: 2 / 1 / 3 / 2;
+		margin-top: -15%;
+	}
+
+	.item3 {
+		grid-area: 2 / 2 / 3 / 3;
+		margin-right: 0;
+		margin-top: 7%;
+	}
+
+	.item4 {
+		grid-area: 2 / 3 / 3 / 4;
+		margin-top: -15%;
+		margin-right: 0%;
+	}
+
+	.item5 {
+		grid-area: 3 / 1 / 4 / 2;
+		margin-right: -40%;
+		margin-top: 0%;
+	}
+
+	.item6 {
+		grid-area: 3 / 3 / 4 / 4;
+		margin-left: -90%;
+	}
+
+	.item7 {
+		grid-area: 4 / 1 / 5 / 2;
+		margin-left: -50%;
+	}
+
+	.item8 {
+		grid-area: 4 / 2 / 5 / 3;
+	}
+
+	.item9 {
+		grid-area: 4 / 3 / 5 / 4;
+		margin-right: -50%;
+	}
+
+	.item10 {
+		grid-area: 5 / 1 / 6 / 2;
+		margin-right: -90%;
+		margin-top: 0%;
+	}
+
+	.item11 {
+		grid-area: 5 / 3 / 6 / 4;
+		margin-left: -40%;
+	}
+
+	.item12 {
+		grid-area: 6 / 1 / 7 / 2;
+		margin-top: 24%;
+		margin-left: 0;
+	}
+
+	.item13 {
+		grid-area: 6 / 2 / 7 / 3;
+		margin-left: 0%;
+	}
+
+	.item14 {
+		grid-area: 6 / 3 / 7 / 4;
+		margin-top: 24%;
+		margin-left: 0%;
+	}
+
+	.item15 {
+		grid-area: 7 / 2 / 8 / 3;
+		margin-right: 0%;
+		margin-top: 5%;
 	}
 }
 
 @media (max-width: 425px) {
-	.grid-container {
-		gap: 5px;
-		/* Réduisez l'espacement pour les très petits écrans */
-	}
-
 	.grid-item img {
-		width: 60%;
-		/* Rendre les images encore plus petites pour les téléphones */
-	}
-
-	/* Continuez à ajuster les tailles de police pour les titres et le texte si nécessaire */
-	.popup-header h2,
-	.popup-footer h3,
-	.popup-footer p {
-		font-size: even smaller;
-		/* Utilisez une valeur qui convient pour de très petits écrans */
-	}
-
-	.grid-item {
-		width: 100%;
-	}
-
-	.item1 {
-	}
-
-	.item2 {
-	}
-
-	.item3 {
-	}
-
-	.item4 {
-	}
-
-	.item5 {
-	}
-
-	.item6 {
-	}
-
-	.item7 {
-	}
-
-	.item8 {
-	}
-
-	.item9 {
-	}
-
-	.item10 {
-	}
-
-	.item11 {
-	}
-
-	.item12 {
-	}
-
-	.item13 {
-	}
-
-	.item14 {
-	}
-
-	.item15 {
+		max-width: 11vw;
 	}
 }
