@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>My first three.js app with Cube Textures</title>
+    <style>
+      body {
+        overflow: hidden;
+        margin: 0;
+      }
+      /* Style pour l'icône de croix */
+      .close-icon {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 32px;
+        height: 32px;
+        background: url("./close.svg");
+        background-size: cover;
+        cursor: pointer;
+        z-index: 10;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      class="close-icon"
+      onclick="window.location.href='../embed/snippet-1.html';"
+    ></div>
+    <!-- Ajout de l'icône de croix -->
+
+    <script type="module">
+      import * as THREE from "https://unpkg.com/three@0.127.0/build/three.module.js";
+
+      import { OrbitControls } from "https://unpkg.com/three@0.127.0/examples/jsm/controls/OrbitControls.js";
+
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(
+        20,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000
+      );
+
+      const renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
+
+      // Chargeur de texture
+      const textureLoader = new THREE.TextureLoader();
+
+      // Créer un tableau pour les matériaux en utilisant les chemins de vos images PNG
+      const materials = [
+        new THREE.MeshBasicMaterial({ map: textureLoader.load("./jb1.png") }),
+        new THREE.MeshBasicMaterial({ map: textureLoader.load("./jb10.jpg") }),
+        new THREE.MeshBasicMaterial({ map: textureLoader.load("./jb4.png") }),
+        new THREE.MeshBasicMaterial({ map: textureLoader.load("./jb8.jpg") }),
+        new THREE.MeshBasicMaterial({ map: textureLoader.load("./jb6.png") }),
+        new THREE.MeshBasicMaterial({ map: textureLoader.load("./jb5.png") }),
+      ];
+
+      // Géométrie du cube
+      const geometry = new THREE.BoxGeometry(1, 1, 1);
+
+      // Créer le cube avec la géométrie et les matériaux
+      const cube = new THREE.Mesh(geometry, materials);
+      scene.add(cube);
+
+      camera.position.z = 5;
+
+      // Initialisation des OrbitControls
+      const controls = new OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true; // Un effet d'amortissement qui donne une sensation d'inertie
+      controls.dampingFactor = 0.05;
+
+      function animate() {
+        requestAnimationFrame(animate);
+
+        controls.update();
+
+        cube.rotation.y += 0.01;
+        cube.rotation.x += 0.01;
+
+        renderer.render(scene, camera);
+      }
+
+      animate();
+    </script>
+  </body>
+</html>

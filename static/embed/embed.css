@@ -936,3 +936,8 @@ iframe {
 	min-height: 300px;
 	border: 1px solid white;
 }
+
+#jb {
+	text-decoration: none;
+	color: white;
+}
