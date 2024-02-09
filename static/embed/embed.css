@@ -167,30 +167,6 @@ li {
 	min-height: 100%;
 }
 
-/* .section-a-right {
-  width: 70%;
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.section-a-right img {
-  object-fit: cover;
-  width: 100%;
-}
-
-.section-a-right > div:nth-child(1) {
-  max-height: 10%;
-  overflow: hidden;
-}
-
-.section-a-right > div:nth-child(1) img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-} */
-
 /* -------------------- Divider -------------------- */
 
 .divider {
@@ -337,10 +313,6 @@ li {
 	gap: 20px;
 	width: 100%;
 }
-
-/* .container-f-uni p {
-  font-size: 10px;
-} */
 
 .col-f-uni-left {
 	width: 33%;
@@ -635,10 +607,6 @@ li {
 	align-items: flex-start;
 }
 
-/* .container-n img {
-  width: 100%;
-} */
-
 .section-n-left {
 	min-height: 490px;
 	width: 30%;
@@ -694,7 +662,6 @@ li {
 	width: 30%;
 	display: flex;
 	flex-direction: column;
-	/* justify-content: space-between; */
 	gap: 20px;
 }
 
@@ -729,7 +696,6 @@ li {
 .p img {
 	width: 100%;
 	min-height: 100%;
-	/* object-fitcover; */
 }
 
 .section-p-left {
@@ -927,7 +893,6 @@ li {
 	display: flex;
 	gap: 20px;
 	width: 100%;
-	/* padding: 10px 20px; */
 }
 
 .col-f-left-v2 {
@@ -962,8 +927,12 @@ li {
 
 /* ---------------------------------------- */
 
-/* iframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-} */
+#video {
+	padding: 0 20px;
+}
+
+iframe {
+	width: 100%;
+	min-height: 300px;
+	border: 1px solid white;
+}
